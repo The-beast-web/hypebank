@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers\Customer;
+
+use App\Http\Controllers\Controller;
+use App\Models\Bank;
+use App\Models\Transaction;
+use App\Models\Transfer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class TransferController extends Controller
+{
+    //
+    public function view()
+    {
+        $bank = Bank::all()->sortBy('name');
+        return view('customer.transfer.index', compact('bank'));
+    }
+
+    public function success()
+    {
+        return view('customer.transfer.success');
+    }
+
+    public function process(Request $request)
+    {
+        $rules = [
+            'amount' => 'required',
+            'bank' => 'required',
+            'account_number' => 'required|integer',
+            'account_name' => 'required|string',
+            'transaction_pin' => 'required|digits:4'
+        ];
+
+        $validated = $request->validate($rules);
+
+        $transfer = new Transfer();
+        $user = Auth::user();
+        $transfer->user_id = $user->id;
+        $transfer->amount = $validated['amount'];
+        $transfer->rec_account_number = $validated['account_number'];
+        $transfer->rec_account_name = $validated['account_name'];
+        $transfer->rec_bank = $validated['bank'];
+
+        // dd($user->transaction_pin, $validated['transaction_pin']);
+
+        if ($user->transaction_pin == $validated['transaction_pin']) {
+
+            $transaction = new Transaction();
+            $transaction->user_id = Auth::id();
+            $transaction->amount = $validated['amount'];
+            $transaction->transaction_type = "Transfer";
+
+            $transfer->tran_id = $transaction->id;
+            $transfer->save();
+
+            $user->balance = $user->balance - $validated['amount'];
+
+            $transaction->status = 'successful';
+            $transaction->save();
+            
+            $user->save();
+
+            return redirect()->route('transfer.success');
+        } else {
+            return redirect()->back()->with('error', 'Invalid Transaction PIN');
+        }
+    }
+}
