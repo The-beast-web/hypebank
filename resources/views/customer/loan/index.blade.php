@@ -1,81 +1,144 @@
 @extends('customer.layout.master')
 
 @section('content')
-    <!-- content @s
-        -->
-        <div class="nk-content nk-content-fluid">
-            <div class="container-xl wide-lg">
-                <div class="nk-content-body">
-                    <div class="nk-block-head nk-block-head-sm">
-                        <div class="nk-block-between">
-                            <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Loan Packages</h3>
-                                <div class="nk-block-des text-soft">
-                                    <p>{{ $loan_package->count() }} packages available.</p>
-                                </div>
-                            </div><!-- .nk-block-head-content -->
-                            <div class="nk-block-head-content">
-                                <div class="toggle-wrap nk-block-tools-toggle">
-                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1"
-                                        data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
-                                    <div class="toggle-expand-content" data-content="pageMenu">
-                                        <ul class="nk-block-tools g-3">
-                                            <li><a href="#" class="btn btn-white btn-outline-light"><em
-                                                        class="icon ni ni-coin"></em><span>Active Loans</span></a></li>
-
-                                        </ul>
-                                    </div>
-                                </div><!-- .toggle-wrap -->
-                            </div><!-- .nk-block-head-content -->
-                        </div><!-- .nk-block-between -->
+<div class="nk-content nk-content-fluid">
+    <div class="container-xl wide-lg">
+        <div class="nk-content-body">
+            <div class="nk-block-head">
+                <div class="nk-block-between-md g-4">
+                    <div class="nk-block-head-content">
+                        <h2 class="nk-block-title fw-normal">Loan Details</h2>
+                        <div class="nk-block-des">
+                            <p>At a glance summary of your account. Have fun!</p>
+                        </div>
+                    </div>
+                    <div class="nk-block-head nk-block-head-sm nk-block-between">
+                        <div class="btn-group">
+                            <a href="{{ route('customer.loan.request') }}" class="btn btn-primary"><span>Request Loan</span></a>
+                        </div>
                     </div><!-- .nk-block-head -->
-                    <div class="nk-block">
-                        <div class="row g-gs">
-                            @foreach ($loan_package as $loan)
-                                                    <div class="col-md-6 col-xxl-4">
-                                <div class="card card-bordered pricing">
-                                    <div class="pricing-head">
-                                        <div class="pricing-title">
-                                            <h4 class="card-title title text-capitalize">{{ $loan->name }}</h4>
-                                            <p class="sub-text">Enjoy entry level of loan.</p>
+                </div>
+            </div><!-- .nk-block-head -->
+            @foreach($loan as $l)
+            <div class="nk-block">
+                <div class="card card-bordered">
+                    <div class="card-aside-wrap">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                        <h5 class="title">Loan Details</h5>
+                                    </div><!-- .nk-block-head -->
+                                    <div class="row gy-5">
+                                        <div class="col-md-3 col-lg-2 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Loan Amount</span>
+                                                <span><em class="ni ni-sign-kobo"></em> {{ $l->amount }} </span>
+                                            </div>
                                         </div>
-                                        <div class="card-text">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <span class="h4 fw-500">{{ $loan->monthly_interest }}%</span>
-                                                    <span class="sub-text">Monthly Interest</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <span class="h4 fw-500">{{ $loan->amount }} NGN</span>
-                                                    <span class="sub-text">Amount</span>
+                                        <div class="col-md-3 col-lg-2 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Monthly Payment</span>
+                                                <span><em class="ni ni-sign-kobo"></em> {{ $l->monthly_payment }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2  col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">EMI Type</span>
+                                                <span class="text-capitalize">{{ $l->emi_type }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2  col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Duration</span>
+                                                <span>{{ $l->tenure }} year(s)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2  col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Start Date</span>
+                                                <span>20 Feb 2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2  col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">End Date</span>
+                                                <span>20 Feb 2022</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- .nk-block -->
+                                <div class="nk-divider divider md"></div>
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                        <h5 class="title">EMI Details</h5>
+                                    </div><!-- .nk-block-head -->
+                                    <div class="row gy-5">
+                                        <div class="col-md-2 col-sm-4 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Total EMI</span>
+                                                <span class="amount text-primary">35</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Paid EMI</span>
+                                                <span class="amount text-success">24</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-12">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Remain EMI</span>
+                                                <span class="amount text-warning">9</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Last EMI Date</span>
+                                                <span>22 August 2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-6">
+                                            <div class="profile-stats">
+                                                <span class="profile-ud-label">Next EMI Date</span>
+                                                <span>29 August 2021</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- .nk-block -->
+                                <div class="nk-divider divider md"></div>
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                        <h5 class="title">Loan Status</h5>
+                                    </div><!-- .nk-block-head -->
+                                    <div class="row gy-5">
+                                        <div class="col-12 col-md-10 col-lg-8">
+                                            <div class="profile-stats">
+                                                <div class="progress progress-lg">
+                                                    <div class="progress-bar progress-bar-striped bg-success" data-progress="75">75%</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="pricing-body">
-                                        <ul class="pricing-features">
-                                            <li><span class="w-50">Min Amount</span> - <span class="ms-auto">{{ $loan->min_amount }} USD</span>
-                                            </li>
-                                            <li><span class="w-50">EMI Type</span> - <span class="ms-auto"> {{ $loan->emi_type }}</span>
-                                            </li>
-                                            <li><span class="w-50">Loan Tenure</span> - <span class="ms-auto">Max {{ $loan->tenure }} year(s)</span></li>
-                                            <li><span class="w-50">Interest Rates</span> - <span
-                                                    class="ms-auto">{{ $loan->interest_rates }}</span></li>
-                                        </ul>
-                                        <ul class="pricing-action">
-                                            <li>
-                                                <a href="{{ route('loan.readmore', [$loan->id, $loan->name]) }}" class="btn btn-outline-primary">Read
-                                                    More</a>
-                                            </li>
-                                        </ul>
+                                </div><!-- .nk-block -->
+                                <div class="nk-divider divider md"></div>
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                        <h5 class="title"><code>Notice</code></h5>
+                                    </div><!-- .nk-block-head -->
+                                    <div class="row gy-5">
+                                        <div class="col-12">
+                                            <dt>If you pay your EMI late, you may attract additional charges from your lender. If you make a payment towards your EMI which is after your due date but within your lender's grace period, there is usually an added 'late fee' that you will have to pay alongside your EMI amount.</dt>
+                                        </div>
                                     </div>
-                                </div>
-                            </div><!-- .col --> 
-                            @endforeach
-                        </div> .
-                    </div><!-- .nk-block -->
-                </div>
-            </div>
+                                </div><!-- .nk-block -->
+                            </div><!-- .card-inner -->
+                        </div><!-- .card-content -->
+                    </div><!-- .card-aside-wrap -->
+                </div><!-- .card -->
+            </div><!-- .nk-block -->
+            @endforeach
         </div>
-        <!-- content @e -->
-    @endsection
+    </div>
+</div> 
+@endsection

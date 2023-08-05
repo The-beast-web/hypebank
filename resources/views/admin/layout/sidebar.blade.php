@@ -1,11 +1,11 @@
 <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="html/index.html" class="logo-link nk-sidebar-logo">
+            <a href="html/index.html" class="logo-link" style="width: 100px">
 
-                <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                <img class="logo-dark logo-img" src="{{ getLogo() }}" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                <img class="logo-light logo-img" src="{{ getLogoDark() }}"  alt="logo">
+                <img class="logo-dark logo-img" src="{{ asset('images/kkkl.png') }}"  alt="logo-dark">
+                <img class="logo-small logo-img logo-img-small" src="{{ asset('images/logo-small.png') }}" srcset="./images/logo-small2x.png 2x" alt="logo-small">
             </a>
         </div>
         <div class="nk-menu-trigger me-n2">
@@ -57,11 +57,15 @@
                             <span class="nk-menu-text">Withdrawals</span>
                         </a>
                     </li>
-                    <li class="nk-menu-item">
-                        <a href="html/ecommerce/integration.html" class="nk-menu-link">
+                    <li class="nk-menu-item @if(request()->routeIs('admin.loan.request')) active current-page @endif">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-money"></em></span>
-                            <span class="nk-menu-text">Loan</span>
+                            <span class="nk-menu-text">Loans</span>
                         </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item @if(request()->routeIs('admin.card.request')) active current-page @endif"><a href="{{ route('admin.loan.active') }}" class="nk-menu-link"><span class="nk-menu-text">Active Loans</span></a></li>
+                            <li class="nk-menu-item @if(request()->routeIs('admin.loan.request')) active current-page @endif"><a href="{{ route('admin.loan.request') }}" class="nk-menu-link"><span class="nk-menu-text">Loan Requests</span></a></li>
+                        </ul><!-- .nk-menu-sub -->
                     </li>
                     <li class="nk-menu-item">
                         <a href="html/ecommerce/supports.html" class="nk-menu-link">

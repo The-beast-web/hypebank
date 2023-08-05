@@ -45,6 +45,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="custom-control custom-control-xs custom-checkbox">
+                    <input type="checkbox" name="remember" class="custom-control-input" id="checkbox">
+                    <label class="custom-control-label text-soft" for="checkbox">Remember Me</label>
+                </div>
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
             </div>
         </form>

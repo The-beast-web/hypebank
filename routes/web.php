@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CardController as AdminCardController;
 use App\Http\Controllers\Admin\DepositController as AdminDepositController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\KycController;
+use App\Http\Controllers\Admin\LoanController as AdminLoanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AccountSetupController;
 use App\Http\Controllers\Customer\CardController;
@@ -14,12 +15,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController;
+use App\Http\Controllers\Customer\AccountController;
 use App\Http\Controllers\Customer\LoanController;
 use App\Http\Controllers\Customer\TransactionController;
 use App\Http\Controllers\Customer\TransferController;
 use App\Http\Controllers\Customer\WithdrawalController;
+use App\Models\Deposit;
+use App\Models\LoanPackage;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Notifications\DepositApproval;
+use Dflydev\DotAccessData\Util;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 
@@ -38,9 +44,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Route::get('/test', function () {
+Route::get('/test', function () {
 
-    $trend = Trend::model(User::class)
+    $user = App\Models\User::find(6);
+
+    dd($user->unreadNotifications()->count());
+
+    foreach ($user->unreadNotifications as $notification) {
+        //$notification->markAsRead();
+    }
+
+    /*  $loan = LoanPackage::find(1);
+    return view('test', compact('loan')); */
+
+
+    //dd(Illuminate\Notifications\DatabaseNotification::first()->data['message']);
+
+    //Auth::user()->notify(new DepositApproval(Deposit::find(18)));
+
+    /*  $trend = Trend::model(User::class)
         ->between(
             start: now()->startOfYear(),
             end: now()->endOfYear(),
@@ -51,8 +73,8 @@ Route::get('/', function () {
     dd(
         $trend->map(fn (TrendValue $value) => $value->aggregate),
         $trend->map(fn (TrendValue $value) => $value->date)
-    );
-}); */
+    ); */
+});
 
 
 /* AUTH ROUTES */
@@ -118,8 +140,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/setting', [SettingsController::class, 'processPaymentGateway'])->name('payment');
     // END OF SETTINGS ROUTE
 
-    // Route::get('/users', [UserController::class, 'index'])->name('admin.users.list');
-    // Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    /* LOAN ROUTES */
+    /* LOAN REQUEST ROUTES */
+    Route::get('/loan/requests', [AdminLoanController::class, 'viewRequest'])->name('loan.request');
+    Route::get('/loan/requests/{id}', [AdminLoanController::class, 'requestDetail'])->name('loan.request.detail');
+    Route::get('/loan/requests/approve/{id}', [AdminLoanController::class, 'approveRequest'])->name('loan.request.approve');
+    Route::get('/loan/requests/cancel/{id}', [AdminLoanController::class, 'cancelLoanApproval'])->name('loan.request.cancel');
+    Route::get('/loan/requests/decline/{id}', [AdminLoanController::class, 'declineRequest'])->name('loan.request.decline');
+    Route::get('/loan/requests/delte/{id}', [AdminLoanController::class, 'deleteRequest'])->name('loan.request.delete');
+    /* END OF LOAN REQUEST ROUTES */
+
+    /* ACTIVE LOAN ROUTES */
+    Route::get('/loan/active', [AdminLoanController::class, 'viewActive'])->name('loan.active');
+    Route::get('/loan/active/{id}', [AdminLoanController::class, 'activeDetail'])->name('loan.active.detail');
 });
 
 /* END ADMIN ROUTES */
@@ -128,11 +161,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 
 
+
 /* CUSTOMER ROUTES */
-Route::middleware('verified')->prefix('customer')->group(function () {
+Route::middleware('verified')->name('customer.')->prefix('customer')->group(function () {
 
     //Customer home view route
-    Route::get('/', [CustomerHomeController::class, 'dashboard'])->name('customer.dashboard');
+    Route::get('/', [CustomerHomeController::class, 'dashboard'])->name('dashboard');
 
     /* KYC ROUTS */
     Route::middleware(['verified', 'restrict'])->group(function () {
@@ -144,10 +178,17 @@ Route::middleware('verified')->prefix('customer')->group(function () {
 
     /* LOAN ROUTES */
     Route::get('/loan', [LoanController::class, 'view'])->name('loan');
-    Route::get('/loan/{id}/{name}/readmore', [LoanController::class, 'readmore'])->name('loan.readmore');
-    Route::get('/loan/{id}/{name}/apply', [LoanController::class, 'application'])->name('loan.apply');
-    Route::post('/loan/{id}/apply', [LoanController::class, 'processApp'])->name('loan.process');
-    Route::get('/loan/successful', [LoanController::class, 'success'])->name('loan.success');
+    Route::get('/loan/request', [LoanController::class, 'viewPackages'])->name('loan.request');
+    Route::get('/loan/request/{id}/{name}/readmore', [LoanController::class, 'readmore'])->name('loan.readmore');
+    Route::get('/loan/request/{id}/{name}/apply', [LoanController::class, 'application'])->name('loan.apply');
+    Route::post('/loan/request/{id}/apply', [LoanController::class, 'processApp'])->name('loan.process');
+    Route::get('/loan/request/successful', [LoanController::class, 'success'])->name('loan.success');
+    /* END OF LOAN ROUTES */
+
+    /* ACCOUNT SETTINGS ROUTES */
+    Route::get('/settings', [AccountController::class, 'view'])->name('setting');
+    Route::post('/settings', [AccountController::class, 'process'])->name('setting.process');
+    Route::post('/setting-address', [AccountController::class, 'address_process'])->name('setting.address.process');
 
     /* CUSTOMER DEPOSIT ROUTES */
 
@@ -199,8 +240,6 @@ Route::middleware('verified')->prefix('customer')->group(function () {
 
     /* END OF DEPOSIT ROUTES */
 
-
-
     /* CARD ROUTES */
     Route::get('/cards', [CardController::class, 'view'])->name('card');
     Route::post('/cards', [CardController::class, 'cardRequest'])->name('card.request');
@@ -230,6 +269,8 @@ Route::middleware('verified')->prefix('customer')->group(function () {
 
     /* TRANSACTIONS ROUTES */
     Route::get('/transactions', [TransactionController::class, 'view'])->name('transaction');
+    Route::get('/transaction/{id}', [TransactionController::class, 'detail'])->name('transaction.detail');
+    Route::get('/transaction/{id}/delete', [TransactionController::class, 'delete'])->name('transaction.delete');
 });
 
 /* END CUSTOMER ROUTES */

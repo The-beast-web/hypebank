@@ -10,6 +10,9 @@ class SettingsController extends Controller
 {
     //
     public function view(){
+
+        $this->seo()->setTitle('General Settings');
+
         return view('admin.settings.index');
     }
 
@@ -31,6 +34,10 @@ class SettingsController extends Controller
             $path = Storage::disk('mydisk')->put('settings', request()->file('app_favicon'));
             $validated['app_favicon'] = $path;
         }
+        if (request()->has('app_logodark')) {
+            $path = Storage::disk('mydisk')->put('settings', request()->file('app_logodark'));
+            $validated['app_logodark'] = $path;
+        }
 
         
 
@@ -41,6 +48,9 @@ class SettingsController extends Controller
     }
 
     public function viewPaymentGateWay(){
+
+        $this->seo()->setTitle('Payment Gateway Settings');
+
         return view('admin.settings.payment-gateway');
     }
 

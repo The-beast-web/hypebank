@@ -599,6 +599,22 @@
     });
   };
 
+  
+$(document).ready(()=>{
+  $('#photo').change(function(){
+    const file = this.files[0];
+    console.log(file);
+    if (file){
+      let reader = new FileReader();
+      reader.onload = function(event){
+        console.log(event.target.result);
+        $('#imgPreview').attr('src', event.target.result);
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
   // Dark Mode Switch @since v2.0
   NioApp.ModeSwitch = function () {
     var toggle = $('.dark-switch');
@@ -610,7 +626,9 @@
     toggle.on('click', function (e) {
       e.preventDefault();
       $(this).toggleClass('active');
+      
       $body.toggleClass('dark-mode');
+     
     });
   };
 

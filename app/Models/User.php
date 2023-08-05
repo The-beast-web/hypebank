@@ -24,6 +24,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'balance',
+        'account_no',
+        'user_type',
+        'password',
+        'setup',
     ];
 
     /**
@@ -49,6 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function kyc(){
         return $this->hasOne(Kyc::class, 'user_id');
+    }
+
+    public function loan(){
+        return $this->hasOne(LoanRequest::class, 'user_id');
     }
 
 }

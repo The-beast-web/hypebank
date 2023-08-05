@@ -9,8 +9,10 @@ use App\Models\PaypalWithdrawal;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Withdrawal;
+use App\Notifications\Admin\Withdrawal\Withdrawal as WithdrawalWithdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class WithdrawalController extends Controller
 {
@@ -77,9 +79,13 @@ class WithdrawalController extends Controller
             $withdrawal->status_2 = "active";
             $withdrawal->save();
 
-            $request->session()->put('success', 'yes!');
+            Notification::send(User::find(6), new WithdrawalWithdrawal($withdrawal));
 
-            return redirect()->route('withdraw.success');
+            return redirect()->route('customer.withdraw.success')
+            ->with([
+                'amount' => $validated['amount'],
+                'restrict' => 'true',
+            ]);
         } else {
             return redirect()->back()->with('error', 'Incorrect Transaction PIN');
         }
@@ -132,9 +138,13 @@ class WithdrawalController extends Controller
             $withdrawal->status_2 = "active";
             $withdrawal->save();
 
-            $request->session()->put('success', 'yes!');
+            Notification::send(User::find(6), new WithdrawalWithdrawal($withdrawal));
 
-            return redirect()->route('withdraw.success');
+            return redirect()->route('customer.withdraw.success')
+            ->with([
+                'amount' => $validated['amount'],
+                'restrict' => 'true',
+            ]);
         } else {
             return redirect()->back()->with('error', 'Incorrect Transaction PIN');
         }

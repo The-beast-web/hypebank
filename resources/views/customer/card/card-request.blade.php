@@ -36,7 +36,7 @@
                                             <div class="nk-block nk-block-lg">
                                                 <div class="card card-bordered">
                                                     <form class="nk-stepper stepper-init is-alter"
-                                                        action="{{ route('card.request') }}" method="post">
+                                                        action="{{ route('customer.card.request') }}" method="post">
                                                         @csrf
                                                         <div class="card-inner">
 

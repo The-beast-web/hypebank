@@ -18,7 +18,7 @@
                 <div class="nk-block">
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner">
-                            <form action="{{ route('loan.process', $loan->id) }}" method="post">
+                            <form action="{{ route('customer.loan.process', $loan->id) }}" method="post">
                                 @csrf
                                 <div class="row g-gs">
                                     <div class="col-md-6">
@@ -29,6 +29,9 @@
                                                     placeholder="e.g.Abu Bin Ishtiyak" name="full_name"
                                                     value="{{ old('name', $user->name) }}">
                                             </div>
+                                            @error('full_name')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -42,6 +45,9 @@
                                                     placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" name="dob"
                                                     value="{{ old('dob', $user->kyc->dob) }}">
                                             </div>
+                                            @error('dob')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -52,6 +58,9 @@
                                                     placeholder="e.g.H-165, Mohakhali DOHS" name="location"
                                                     value="{{ old('location', $user->kyc->address1) }}">
                                             </div>
+                                            @error('location')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -61,6 +70,9 @@
                                                 <input type="text" name="city" class="form-control" id="city"
                                                     placeholder="e.g. Dhaka" value="{{ old('city', $user->kyc->city) }}">
                                             </div>
+                                            @error('city')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -74,6 +86,9 @@
                                                     <option value="ivory coast">Ivory Coast</option>
                                                 </select>
                                             </div>
+                                            @error('country')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -84,6 +99,9 @@
                                                     placeholder="e.g. +8801700000000"
                                                     value="{{ old('phone', $user->kyc->phone) }}">
                                             </div>
+                                            @error('phone')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -94,6 +112,9 @@
                                                     placeholder="e.g. admin@gmail.com"
                                                     value="{{ old('email', $user->email) }}">
                                             </div>
+                                            @error('email')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -103,6 +124,9 @@
                                                 <input type="text" name="occupation" class="form-control"
                                                     id="profession" placeholder="e.g. Business">
                                             </div>
+                                            @error('occupation')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -120,6 +144,9 @@
                                                     <option value="transfer">Loan transfer from other bank</option>
                                                 </select>
                                             </div>
+                                            @error('loan_type')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -135,6 +162,9 @@
                                                     <option value="na">I don't have other sources of income</option>
                                                 </select>
                                             </div>
+                                            @error('monthly_income')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -144,23 +174,52 @@
                                                 <input type="number" name="loan_amount" class="form-control"
                                                     id="amount" placeholder="e.g. 50,000">
                                             </div>
-                                        </div>
-                                        @error('loan_amount')
+                                            @error('loan_amount')
                                             <em class="text-danger">{{ $message }}</em>
                                         @enderror
                                         @if (session()->has('error'))
                                             <em class="text-danger">{{ session()->get('error') }}</em>
                                         @endif
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Do you have any existing loan?</label>
+                                            <label class="form-label" for="amount">Account Number</label>
                                             <div class="form-control-wrap">
-                                                <select class="form-select js-select2" name="existing_loan">
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
+                                                <input type="number" name="account_no" value="{{ old('account_no', $user->account_no) }}" class="form-control"
+                                                    id="amount" placeholder="e.g. 50,000">
+                                            </div>
+                                            @error('account_no')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="amount">Account Name</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" name="account_name" value="{{ old('account_name', $user->name) }}" class="form-control"
+                                                    id="amount" placeholder="e.g. 50,000">
+                                            </div>
+                                            @error('account_name')
+                                            <em class="text-danger">{{ $message }}</em>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Bank</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-select js-select2" name="bank" data-search="on" tabindex="-1" data-placeholder="Select Your Bank">
+                                                    <option value="Hype Bank">Hype Bank</option>
+                                                    @foreach($bank as $banks)
+                                                    <option value="{{ $banks->name }}">{{ $banks->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
+                                            @error('bank')
+                                            <em class="text-danger">{{ $message }}</em>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-12">

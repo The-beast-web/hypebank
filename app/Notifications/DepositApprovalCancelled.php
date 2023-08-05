@@ -29,7 +29,7 @@ class DepositApprovalCancelled extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -55,9 +55,10 @@ class DepositApprovalCancelled extends Notification
      * @return array<string, mixed>
      */
     public function toArray(object $notifiable): array
-    {
+    { 
         return [
-            //
+            'subject' => '<em class="ni ni-sign-kobo"></em>'. $this->deposit->amount.' Deposit Approval Cancelled',
+            'action' => route('customer.dashboard')
         ];
     }
 }

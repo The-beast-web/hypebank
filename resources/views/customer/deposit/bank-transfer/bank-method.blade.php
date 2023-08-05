@@ -11,8 +11,8 @@
                                             <h2 class="nk-block-title page-title">Bank Deposit</h2>
                                         </div>
                                         <div class="nk-block-head-content">
-                                            <a href="{{ route('deposit') }}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                                            <a href="{{ route('deposit') }}" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                            <a href="{{ route('customer.deposit') }}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                                            <a href="{{ route('customer.deposit') }}" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
@@ -57,7 +57,7 @@
                                                                 <span class="sub-text">I have transfered to the account provided above? Click on the continue button below.</span>
                                                             </div>
                                                             <div class="col-sm-6 col-md-4 col-lg-12">
-                                                                <a href="{{ route('deposit.bank-deposit') }}" class="btn btn-primary">Continue</a>
+                                                                <a href="{{ route('customer.deposit.bank-deposit') }}" class="btn btn-primary">Continue</a>
                                                             </div>
                                                         </div>
                                                     </div><!-- .card-inner -->

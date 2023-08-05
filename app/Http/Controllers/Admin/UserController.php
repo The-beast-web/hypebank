@@ -21,7 +21,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $this->seo()->setTitle('Users List');
+
+        $users = User::paginate(5);
+        
         return view('admin.users.index', compact('users'));
     }
 
@@ -30,7 +33,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
+        $this->seo()->setTitle('Create User');
+
         return view('admin.users.create');
     }
 
@@ -80,6 +85,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
+        $this->seo()->setTitle($user->name);
 
         $kyc = Kyc::where('user_id', $user->id)->first();
         return view('admin.users.edit', compact(['user', 'kyc']));

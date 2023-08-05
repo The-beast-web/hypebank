@@ -19,15 +19,7 @@
                                 <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-bs-toggle="tab" href="#eligibility"><em
-                                                class="icon ni ni-user-check-fill"></em><span>Eligibility</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#useLoan"><em
-                                                class="icon ni ni-question"></em><span>How can I use this loan</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#required"><em
-                                                class="icon ni ni-file-text"></em><span>Required documents</span></a>
+                                                class="icon ni ni-user-check-fill"></em><span>Terms & Conditions</span></a>
                                     </li>
                                 </ul><!-- .nav-tabs -->
                                 <div class="card-inner">
@@ -278,94 +270,12 @@
                                                     <ul class="pt-2">
                                                         <li>
                                                             <button class="btn btn-primary" id="bt_submit" data-dismiss="modal">
-                                                            <a href="{{ route('loan.apply', [$loan->id, $loan->name]) }}" class="text-white">Apply Now</a>
+                                                            <a href="{{ route('customer.loan.apply', [$loan->id, $loan->name]) }}" class="text-white">Apply Now</a>
                                                             </button>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="useLoan">
-                                            <h6 class="title mb-2">Our service is designed to support your various needs
-                                                including:</h6>
-                                            <div>
-                                                <ul>
-                                                    <li class="list-item">Home improvement / renovation</li>
-                                                    <li class="list-item">Meeting financial liabilities</li>
-                                                    <li class="list-item">Sole proprietorship or limited liabilities</li>
-                                                    <li class="list-item">Domestic or foreign travel</li>
-                                                    <li class="list-item">Medical treatment for self/family members</li>
-                                                    <li class="list-item">Special Quota like superpatriot, aged & disable
-                                                        people</li>
-                                                    <li class="list-item">Purchase of consumer durables</li>
-                                                    <li class="list-item">Education</li>
-                                                    <li class="list-item">Other needs</li>
-                                                </ul>
-                                            </div>
-                                            <ul class="pt-3">
-                                                <li>
-                                                    <a href="html/loan/apply-application.html" data-dismiss="modal"
-                                                        class="btn  btn-primary">Apply Now</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="required">
-                                            <div>
-                                                <h6 class="title mb-2">Edication</h6>
-                                                <div>
-                                                    <ul>
-                                                        <li class="list-item">Copies of National ID Card & TIN of Borrower,
-                                                            Student and Guarantor (if available)</li>
-                                                        <li class="list-item">Fully Completed and Signed Application Form</li>
-                                                        <li class="list-item">Salary/ Income Certificate stating net earning
-                                                        </li>
-                                                        <li class="list-item">Copy of Passport with valid visa of the student
-                                                        </li>
-                                                        <li class="list-item">Academic Documents of Student</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4">
-                                                <h6 class="title mb-2">Service Holder</h6>
-                                                <div>
-                                                    <ul>
-                                                        <li class="list-item">Photocopy of NID/Smart card of Loan applicant and
-                                                            guarantor</li>
-                                                        <li class="list-item">3 copies of Passport size lab print photograph of
-                                                            Loan applicant and 2 copies of guarantor</li>
-                                                        <li class="list-item">Visiting Card/Business card/Office ID copy of
-                                                            both loan applicant and guarantor</li>
-                                                        <li class="list-item">Latest E-TIN of customer</li>
-                                                        <li class="list-item">Sanction letter and repayment statement of
-                                                            existing loans (if any)</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4 mb-2">
-                                                <h6 class="title mb-2">Bussiness Loan</h6>
-                                                <div>
-                                                    <ul>
-                                                        <li class="list-item">Photocopy of NID/Smart/passport/driving lisence
-                                                            or any other valid documents form government</li>
-                                                        <li class="list-item">3 copies of Passport size lab print photograph of
-                                                            Loan applicant and 2 copies of guarantor</li>
-                                                        <li class="list-item">Bank account statements</li>
-                                                        <li class="list-item">Registration documents or tax payment receipt
-                                                        </li>
-                                                        <li class="list-item">Shop registration certificate</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                                <li>
-                                                    <a href="html/loan/apply-application.html" data-dismiss="modal"
-                                                        class="btn  btn-primary">Apply Now</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" data-dismiss="modal"
-                                                        class="btn btn-outline-primary">Download</a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>

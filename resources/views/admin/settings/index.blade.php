@@ -24,7 +24,7 @@
                                     <div class="nk-block">
                                         <form action="{{ route('admin.setting.update_general') }}" method="POST" class="form-settings" enctype="multipart/form-data">
                                             @csrf
-                                            <div class="row g-3 align-center">
+                                            <div class="row align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label" for="site-name">App Name</label>
@@ -40,7 +40,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
+                                            <div class="row align-center mt-2">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label" for="site-name">Logo</label>
@@ -55,7 +55,37 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
+                                            <div class="row mt-2 align-center">
+                                                <div class="col-lg-5">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="site-name">Dark-mode Logo</label>
+                                                        <span class="form-note">Choose a dark-mode logo</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                            <input type="file" name="app_logodark" class="form-control" id="site-name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2 align-center">
+                                                <div class="col-lg-5">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="site-name">Small Logo</label>
+                                                        <span class="form-note">Choose a minimized sidebar logo</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                            <input type="file" name="app_logosmall" class="form-control" id="site-name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2 align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label" for="site-name">Favicon</label>
@@ -70,24 +100,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
-                                                <div class="col-lg-5">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="site-email">Hospital Address</label>
-                                                        <span class="form-note">Specify the key of your hospital
-                                                            address</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <div class="form-group">
-                                                        <div class="form-control-wrap">
-                                                            <input type="text" name="app_email" class="form-control" id="site-email"
-                                                                value="{{ setting('app_email') }}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row g-3 align-center">
+
+                                            <div class="row mt-2 align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label" for="site-copyright">Copyright</label>
@@ -104,7 +118,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
+                                            <div class="row mt-2 align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Allow Registration</label>
@@ -141,7 +155,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
+                                            <div class="row mt-2 align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Main Site</label>
@@ -158,7 +172,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row g-3 align-center">
+                                            <div class="row mt-2 align-center">
                                                 <div class="col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label" for="site-name"> Description</label>
@@ -172,24 +186,6 @@
                                                                 <textarea class="form-control form-control no-resize" id="fv-message" name="fv-message" placeholder="Hello World!">
                                                  </textarea>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row g-3 align-center">
-                                                <div class="col-lg-5">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="site-off">Maintanance Mode</label>
-                                                        <span class="form-note">Enable to make Project make offline.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <div class="form-group">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="reg-public" id="site-off">
-                                                            <label class="custom-control-label"
-                                                                for="site-off">Offline</label>
                                                         </div>
                                                     </div>
                                                 </div>

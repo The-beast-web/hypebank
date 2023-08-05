@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function dashboard(){
+
+        $this->seo()->setTitle('Dashboard');
+
         return view('admin.index');
     }
 }

@@ -34,7 +34,7 @@
                                                             <div class="nk-block">
                                                                 <div class="card card-bordered">
                                                                     <div class="card-inner">
-                                                                        <form action="{{ route('withdraw.bank.process') }}"
+                                                                        <form action="{{ route('customer.withdraw.bank.process') }}"
                                                                             method="post">
                                                                             @csrf
                                                                             <div class="row gy-4">

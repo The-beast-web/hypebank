@@ -51,6 +51,9 @@ class TransferController extends Controller
             $transaction->user_id = Auth::id();
             $transaction->amount = $validated['amount'];
             $transaction->transaction_type = "Transfer";
+            $transaction->transfer_recipient_account_no = $validated['account_number'];
+            $transaction->transfer_recipient_name = $validated['account_name'];
+            $transaction->transfer_recipient_bank = $validated['bank'];
 
             $transfer->tran_id = $transaction->id;
             $transfer->save();
@@ -62,7 +65,7 @@ class TransferController extends Controller
             
             $user->save();
 
-            return redirect()->route('transfer.success');
+            return redirect()->route('customer.transfer.success');
         } else {
             return redirect()->back()->with('error', 'Invalid Transaction PIN');
         }

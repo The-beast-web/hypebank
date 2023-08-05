@@ -13,6 +13,7 @@ class DepositApproval extends Notification
 
 
     public $deposit;
+    public $transaction;
 
     /**
      * Create a new notification instance.
@@ -20,6 +21,7 @@ class DepositApproval extends Notification
     public function __construct($n)
     {
         $this->deposit = $n;
+        $this->transaction = $n;
     }
 
     /**
@@ -29,7 +31,7 @@ class DepositApproval extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -56,8 +58,10 @@ class DepositApproval extends Notification
      */
     public function toArray(object $notifiable): array
     {
+        
         return [
-            //
+            'subject' => '<em class="ni ni-sign-kobo"></em>'. $this->deposit->amount.' Deposit Approval',
+            'action' => route('customer.transaction.detail', $this->deposit->tran_id)
         ];
     }
 }

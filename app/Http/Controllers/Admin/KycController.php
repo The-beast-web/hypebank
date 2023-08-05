@@ -14,6 +14,7 @@ class KycController extends Controller
     //
     public function list()
     {
+        $this->seo()->setTitle('Kyc Documents');
         $card = Card::where('user_id', Auth::id())->get();
         $kyc = Kyc::all();
         $users = User::all();
@@ -23,9 +24,11 @@ class KycController extends Controller
     //view kyc full details
     public function detail($id)
     {
+       
         
         $kyc = Kyc::find($id);
         $user = User::find($kyc->user_id);
+        $this->seo()->setTitle($user->name.'- Kyc Documents');
         return view('admin.kyc.detail', compact('user'));
     }
 

@@ -13,11 +13,13 @@ class CardController extends Controller
     //
     public function view()
     {
-        $cards = Cardrequest::all();
+        $this->seo()->setTitle('Card Requests');
+        $cards = Cardrequest::where('status', 'pending' || 'status', 'declined')->get();
         return view('admin.card.card-request', compact('cards'));
     }
 
     public function viewAvailable(){
+        $this->seo()->setTitle('Available Cards');
         $cards = Card::all();
         return view('admin.card.cards', compact('cards'));
     }

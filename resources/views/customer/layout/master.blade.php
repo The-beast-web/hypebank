@@ -4,13 +4,13 @@
 <head>
     <base href="../../">
     <meta charset="utf-8">
-    <meta name="author" content="The Beastist">
+    {!! SEO::generate() !!}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ getFavicon() }}">
     <!-- Page Title  -->
-    <title>e-Commerce Home | DashLite Admin Template</title>
+    
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.1.2') }}">
@@ -48,6 +48,15 @@
     <script src="{{ asset('assets/js/scripts.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('assets/js/charts/chart-crypto.js?ver=3.1.2') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    @stack('script')
 </body>
 
 </html>

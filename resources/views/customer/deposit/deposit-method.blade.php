@@ -27,7 +27,7 @@
 
                                                 <ul class="row g-3">
                                                     <li class="col-3">
-                                                        <a href="{{ route('deposit.bank-method') }}" class="">
+                                                        <a href="{{ route('customer.deposit.bank-method') }}" class="">
                                                             <div class="card h-100 lin card-bordered">
                                                                 <div class="card-body">
                                                                 <div class=" text-center">
@@ -39,7 +39,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="col-3">
-                                                        <a href="{{ route('deposit.paypal-method') }}">
+                                                        <a href="{{ route('customer.deposit.paypal-method') }}">
                                                             <div class="card lin h-100 card-bordered">
                                                                 <div class="card-body">
                                                                     <div class=" text-center">
@@ -51,7 +51,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="col-3">
-                                                        <a href="{{ route('deposit.bitcoin-method') }}">
+                                                        <a href="{{ route('customer.deposit.bitcoin-method') }}">
                                                             <div class="card lin h-100 card-bordered">
                                                                 <div class="card-body">
                                                                     <div class=" text-center">

@@ -11,8 +11,10 @@ use App\Models\Kyc;
 use App\Models\Paypal;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Notifications\Admin\Deposit\Deposit as DepositDeposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class DepositController extends Controller
@@ -100,7 +102,9 @@ class DepositController extends Controller
         $deposit->status = "pending";
         $deposit->save();
 
-        return redirect()->route('deposit.success')
+        Notification::send(User::find(6), new DepositDeposit($deposit));
+
+        return redirect()->route('customer.deposit.success')
         ->with([
             'amount' => $validated['amount'],
             'restrict' => 'true',
@@ -174,11 +178,13 @@ class DepositController extends Controller
         $deposit->save();
 
 
+        Notification::send(User::find(6), new DepositDeposit($deposit));
 
-        $request->session()->put('amount', $validated['amount']);
-        $request->session()->put('success', 'yes!');
-
-        return redirect()->route('deposit.success');
+        return redirect()->route('customer.deposit.success')
+        ->with([
+            'amount' => $validated['amount'],
+            'restrict' => 'true',
+        ]);
     }
     // END OF PAYPAL DEPOSIT METHODS
 
@@ -245,11 +251,13 @@ class DepositController extends Controller
         $deposit->status = "pending";
         $deposit->save();
 
+        Notification::send(User::find(6), new DepositDeposit($deposit));
 
-        $request->session()->put('amount', $validated['amount']);
-        $request->session()->put('success', 'yes!');
-
-        return redirect()->route('deposit.success');
+        return redirect()->route('customer.deposit.success')
+        ->with([
+            'amount' => $validated['amount'],
+            'restrict' => 'true',
+        ]);
     }
     // END OF BITCOIN DEPOSIT METHODS
 }

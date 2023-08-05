@@ -27,7 +27,7 @@
                                                     <h5 class="title mb-3">Chooose A Withdrawal Method</h5>
                                                     <ul class="row g-3">
                                                         <li class="col-4">
-                                                            <a href="{{ route('withdraw.bank') }}" class="">
+                                                            <a href="{{ route('customer.withdraw.bank') }}" class="">
                                                                 <div class="card h-100 lin card-bordered">
                                                                     <div class="card-body">
                                                                         <div class=" text-center">
@@ -41,7 +41,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="col-4">
-                                                            <a href="{{ route('withdraw.paypal') }}">
+                                                            <a href="{{ route('customer.withdraw.paypal') }}">
                                                                 <div class="card lin h-100 card-bordered">
                                                                     <div class="card-body">
                                                                         <div class=" text-center">

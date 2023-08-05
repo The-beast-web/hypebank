@@ -30,7 +30,7 @@
                                                         <div class="nk-block">
                                                             <div class="card card-bordered">
                                                                 <div class="card-inner">
-                                                                    <form action="{{ route('transfer.transfer-process') }}" method="post">
+                                                                    <form action="{{ route('customer.transfer.transfer-process') }}" method="post">
                                                                         @csrf
                                                                         <div class="row gy-4">
                                                                             <div class="col-xxl-4 col-md-6">

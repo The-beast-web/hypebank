@@ -20,6 +20,7 @@ class DepositController extends Controller
     // Main deposit list
     public function index()
     {
+        $this->seo()->setTitle('Deposits');
         $trash = Deposit::where('status_2', 'trash')->get()->sortByDesc('id');
         $deposits = Deposit::where('status_2', 'active')->get()->sortByDesc('id');
         return view('admin.transactions.deposit.deposit', compact(['deposits', 'trash']));
@@ -28,6 +29,7 @@ class DepositController extends Controller
     // Trash deposit list
     public function viewTrash()
     {
+        $this->seo()->setTitle('Deposits Trash');
         $deposits = Deposit::where('status_2', 'trash')->get()->sortByDesc('id');
         return view('admin.transactions.deposit.deposit-trash', compact('deposits'));
     }
@@ -66,11 +68,13 @@ class DepositController extends Controller
     // view each deposit full details
     public function details($id)
     {
+        
         $deposit = Deposit::find($id);
+        $this->seo()->setTitle($deposit->user->name.' - Deposit');
         $paypal = Paypal::find($deposit->paypal_deposit_id);
         $bitcoin = Bitcoin::find($deposit->bitcoin_deposit_id);
         $bank = Bankdeposit::find($deposit->bank_deposit_id);
-        return view('admin.transactions.deposit-details', compact(['deposit', 'bank', 'paypal', 'bitcoin']));
+        return view('admin.transactions.deposit.deposit-details', compact(['deposit', 'bank', 'paypal', 'bitcoin']));
     }
 
     // Approve deposit

@@ -11,6 +11,14 @@ function getLogo(){
 
 }
 
+function getLogoDark(){
+
+    $logo = Storage::disk('mydisk');
+
+    return $logo->url(setting('app_logodark'));
+
+}
+
 function getFavicon(){
 
     $favicon = Storage::disk('mydisk');

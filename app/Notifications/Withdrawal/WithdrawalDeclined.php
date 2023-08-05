@@ -28,7 +28,7 @@ class WithdrawalDeclined extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -56,7 +56,8 @@ class WithdrawalDeclined extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'subject' => '<em class="ni ni-sign-kobo"></em>'. $this->withdraw->amount.' Withdrawal Declined',
+            'action' => route('customer.dashboard')
         ];
     }
 }
