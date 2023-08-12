@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BankWithdrawal;
 use App\Models\Paypal;
 use App\Models\PaypalWithdrawal;
+use App\Models\ServiceRevenue;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Withdrawal;
@@ -19,8 +20,9 @@ class WithdrawalController extends Controller
     public function viewList()
     {
         $trash = Withdrawal::where('status_2', 'trash')->get();
-        $withdraws = Withdrawal::where('status_2', 'active')->get()->sortByDesc('id');
-        return view('admin.transactions.withdrawal.withdrawal', compact(['withdraws', 'trash']));
+        $count = 0;
+        $withdraws = Withdrawal::where('status_2', 'active')->orderByDesc('id')->paginate(10);
+        return view('admin.transactions.withdrawal.withdrawal', compact(['withdraws', 'count', 'trash']));
     }
 
     //Withdrawal trash list
@@ -72,9 +74,12 @@ class WithdrawalController extends Controller
     public function approve($id)
     {
         $withdraw = Withdrawal::find($id);
+        $service = new ServiceRevenue();
+        $service->amount = $withdraw->amount/100 * 10;
+        $service->save();
         //update user balance
         $user = User::find($withdraw->user_id);
-        $user->balance = $user->balance - $withdraw->amount;
+        $user->balance = $user->balance - $withdraw->amount - $service->amount;
         $user->save();
         //@e
         $withdraw->status = 'approved';
@@ -94,9 +99,10 @@ class WithdrawalController extends Controller
     public function cancel($id)
     {
         $withdraw = Withdrawal::find($id);
+        $service = $withdraw->amount/100 * 10;
         //update user balance
         $user = User::find($withdraw->user_id);
-        $user->balance = $user->balance + $withdraw->amount;
+        $user->balance = $user->balance + $withdraw->amount + $service;
         $user->save();
         //@e
         $withdraw->status = 'pending';

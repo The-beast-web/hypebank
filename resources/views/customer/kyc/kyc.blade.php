@@ -16,7 +16,7 @@
                     </div>
                 </div><!-- nk-block-head -->
                 <div class="nk-block">
-                    <form action="{{ route('acc-setup') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('customer.acc-setup') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                     <div class="card card-bordered p-5">
                         <div class="nk-kycfm">

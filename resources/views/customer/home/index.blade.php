@@ -9,9 +9,6 @@
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Dashboard</h3>
-                                <div class="nk-block-des text-soft">
-                                    <p>Your Account Dashboard at a glance</p>
-                                </div>
                             </div><!-- .nk-block-head-content -->
                             <div class="nk-block-head-content">
                                 <div class="toggle-wrap nk-block-tools-toggle">
@@ -21,8 +18,7 @@
                                         <ul class="nk-block-tools g-3">
                                             <li>
                                                 <a href="{{ route('customer.deposit') }}"
-                                                    class=" btn btn-white btn-dim btn-outline-light"><span
-                                                        class="d-none d-md-inline">Deposit</span> <em
+                                                    class=" btn btn-white btn-dim btn-outline-light"><span>Deposit</span> <em
                                                         class="d-none d-sm-inline icon ni ni-arrow-long-left"></em></a>
                                             </li>
                                             <li class="nk-block-tools-opt"><a
@@ -77,18 +73,6 @@
                                                             Withdrawals
                                                         </h6>
                                                         <h5 class="amount text-success">{{ $withdraw->count() }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row g-3 mt-4">
-                                                <div class="col-md-6">
-                                                    <div class="data">
-                                                        <h4 class="text-white-50">Account Name : <span class="text-white">{{ Auth::user()->name }}</span></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="data">
-                                                        <h4 class="text-white-50">Account Number : <span class="text-white">{{ Auth::user()->account_no }}</span></h4>
                                                     </div>
                                                 </div>
                                             </div>

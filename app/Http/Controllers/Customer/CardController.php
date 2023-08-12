@@ -35,6 +35,6 @@ class CardController extends Controller
         $card->status = "pending";
         $card->save();
 
-        return redirect()->route('card.success');
+        return redirect()->route('customer.card.success');
     }
 }

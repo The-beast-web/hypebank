@@ -89,7 +89,7 @@ class LoanController extends Controller
 
     public function viewActive()
     {
-        $active_loan = ActiveLoan::paginate(5);
+        $active_loan = ActiveLoan::paginate(10);
         return view('admin.loan.active-loans.index', compact(['active_loan']));
     }
 

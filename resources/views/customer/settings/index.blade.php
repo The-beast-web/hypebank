@@ -261,7 +261,8 @@
                                         <div class="form-group">
                                             <label class="form-label" for="address-l1">Address Line 1</label>
                                             <input type="text" class="form-control form-control-lg" name="address-l1"
-                                                id="address-l1" value="{{ $user->kyc?->address1 }}">
+                                                id="address-l1" value="{{ $user->kyc?->address1 }}"
+                                                placeholder="Address Line 1">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -322,7 +323,7 @@
                             </form>
                         </div><!-- .tab-pane -->
                         <div class="tab-pane" id="security">
-                            <form action="{{ route('customer.setting.process') }}" id="profile-update" method="POST">
+                            <form action="{{ route('customer.setting.security') }}" id="security-update" method="POST">
                                 @csrf
                                 <div class="row gy-4">
                                     <div class="col-md-6">
@@ -335,7 +336,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="address-l2">New Password</label>
-                                            <input type="text" name="new-password"
+                                            <input type="password" name="new-password"
                                                 class="form-control form-control-lg" id="new-passcode">
                                         </div>
                                     </div>
@@ -356,8 +357,8 @@
                                     <div class="col-12">
                                         <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                             <li>
-                                                <a href="#" class="btn btn-lg btn-primary">Update Security
-                                                    Details</a>
+                                                <button type="submit" class="btn btn-lg btn-primary">Update Security
+                                                    Details</button>
                                             </li>
                                             <li>
                                                 <a href="#" data-bs-dismiss="modal"
@@ -428,10 +429,58 @@
                         }
                     });
                 }
-
-
             });
+
             $('#address-update').on('submit', function(e) {
+
+                e.preventDefault();
+
+                form = $(this);
+
+                if (form.valid()) {
+
+                    var f = form.find(':submit');
+
+                    var button = f.html();
+
+                    f.attr("disabled", "disabled")
+                        .html(
+                            '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span><span>Loading...</span>'
+                        );
+
+                    // $(form).ajaxSubmit();
+                    $.ajax({
+                        url: form.attr('action'),
+                        type: "POST",
+                        data: form.serialize(),
+                        success: function(result) {
+
+                            console.log(result);
+
+                            f.removeAttr("disabled").html(button);
+
+                            window.location.replace(result.redirect_url);
+
+                        },
+                        error: function(xhr, status, error) {
+
+                            f.removeAttr("disabled").html(button);
+
+                            $.each(xhr.responseJSON.errors, function(key, item) {
+                                $('input[name = ' + key + ']')
+                                    .removeClass('is-valid')
+                                    .addClass('is-invalid')
+                                    .after('<div class="invalid-feedback">' + item +
+                                        '</div>');
+
+                            });
+
+                        }
+                    });
+                }
+            });
+
+            $('#security-update').on('submit', function(e) {
 
                 e.preventDefault();
 

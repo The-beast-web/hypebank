@@ -65,145 +65,6 @@
                                                         <a href="#" class="btn btn-icon search-toggle toggle-search"
                                                             data-target="search"><em class="icon ni ni-search"></em></a>
                                                     </li><!-- li -->
-                                                    <li class="btn-toolbar-sep"></li><!-- li -->
-                                                    <li>
-                                                        <div class="toggle-wrap">
-                                                            <a href="#" class="btn btn-icon btn-trigger toggle"
-                                                                data-target="cardTools"><em
-                                                                    class="icon ni ni-menu-right"></em></a>
-                                                            <div class="toggle-content" data-content="cardTools">
-                                                                <ul class="btn-toolbar gx-1">
-                                                                    <li class="toggle-close">
-                                                                        <a href="#"
-                                                                            class="btn btn-icon btn-trigger toggle"
-                                                                            data-target="cardTools"><em
-                                                                                class="icon ni ni-arrow-left"></em></a>
-                                                                    </li><!-- li -->
-                                                                    <li>
-                                                                        <div class="dropdown">
-                                                                            <a href="#"
-                                                                                class="btn btn-trigger btn-icon dropdown-toggle"
-                                                                                data-bs-toggle="dropdown">
-                                                                                <div class="dot dot-primary"></div>
-                                                                                <em class="icon ni ni-filter-alt"></em>
-                                                                            </a>
-                                                                            <div
-                                                                                class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-end">
-                                                                                <div class="dropdown-head">
-                                                                                    <span
-                                                                                        class="sub-title dropdown-title">Filter
-                                                                                        Customers</span>
-                                                                                </div>
-                                                                                <div class="dropdown-body dropdown-body-rg">
-                                                                                    <div class="row gx-6 gy-3">
-                                                                                        <div class="col-6">
-                                                                                            <div
-                                                                                                class="custom-control custom-control-sm custom-checkbox">
-                                                                                                <input type="checkbox"
-                                                                                                    class="custom-control-input"
-                                                                                                    id="hasBalance">
-                                                                                                <label
-                                                                                                    class="custom-control-label"
-                                                                                                    for="hasBalance"> Have
-                                                                                                    Balance</label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-6">
-                                                                                            <div
-                                                                                                class="custom-control custom-control-sm custom-checkbox">
-                                                                                                <input type="checkbox"
-                                                                                                    class="custom-control-input"
-                                                                                                    id="hasKYC">
-                                                                                                <label
-                                                                                                    class="custom-control-label"
-                                                                                                    for="hasKYC"> KYC
-                                                                                                    Verified</label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="overline-title overline-title-alt">Card
-                                                                                                    Type</label>
-                                                                                                <select
-                                                                                                    class="form-select js-select2">
-                                                                                                    <option value="any">Any
-                                                                                                        Card</option>
-                                                                                                    <option value="Visa">Visa
-                                                                                                    </option>
-                                                                                                    <option value="Mastercard">
-                                                                                                        Mastercard</option>
-                                                                                                    <option
-                                                                                                        value="AmericanExpress">
-                                                                                                        American Express
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="overline-title overline-title-alt">Status</label>
-                                                                                                <select
-                                                                                                    class="form-select js-select2">
-                                                                                                    <option value="any">Any
-                                                                                                        Status</option>
-                                                                                                    <option value="new">New
-                                                                                                    </option>
-                                                                                                    <option value="active">
-                                                                                                        Active</option>
-                                                                                                    <option value="suspend">
-                                                                                                        Suspend</option>
-                                                                                                    <option value="deleted">
-                                                                                                        Deleted</option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12">
-                                                                                            <div class="form-group">
-                                                                                                <button type="button"
-                                                                                                    class="btn btn-secondary">Filter</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="dropdown-foot between">
-                                                                                    <a class="clickable" href="#">Reset
-                                                                                        Filter</a>
-                                                                                    <a href="#">Save Filter</a>
-                                                                                </div>
-                                                                            </div><!-- .filter-wg -->
-                                                                        </div><!-- .dropdown -->
-                                                                    </li><!-- li -->
-                                                                    <li>
-                                                                        <div class="dropdown">
-                                                                            <a href="#"
-                                                                                class="btn btn-trigger btn-icon dropdown-toggle"
-                                                                                data-bs-toggle="dropdown">
-                                                                                <em class="icon ni ni-setting"></em>
-                                                                            </a>
-                                                                            <div
-                                                                                class="dropdown-menu dropdown-menu-xs dropdown-menu-end">
-                                                                                <ul class="link-check">
-                                                                                    <li><span>Show</span></li>
-                                                                                    <li class="active"><a
-                                                                                            href="#">10</a></li>
-                                                                                    <li><a href="#">20</a></li>
-                                                                                    <li><a href="#">50</a></li>
-                                                                                </ul>
-                                                                                <ul class="link-check">
-                                                                                    <li><span>Order</span></li>
-                                                                                    <li class="active"><a
-                                                                                            href="#">DESC</a></li>
-                                                                                    <li><a href="#">ASC</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div><!-- .dropdown -->
-                                                                    </li><!-- li -->
-                                                                </ul><!-- .btn-toolbar -->
-                                                            </div><!-- .toggle-content -->
-                                                        </div><!-- .toggle-wrap -->
-                                                    </li><!-- li -->
                                                 </ul><!-- .btn-toolbar -->
                                             </div><!-- .card-tools -->
                                         </div><!-- .card-title-group -->
@@ -245,8 +106,7 @@
                                                 <div class="nk-tb-item">
                                                     <div class="nk-tb-col nk-tb-col-check">
                                                         <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                id="cid1">
+                                                            <input type="checkbox" class="custom-control-input" id="cid1">
                                                             <label class="custom-control-label" for="cid1"></label>
                                                         </div>
                                                     </div>
@@ -357,46 +217,12 @@
                                     <div class="card-inner">
                                         <div class="nk-block-between-md g-3">
                                             <div class="g">
-                                                <ul class="pagination justify-content-center justify-content-md-start">
-                                                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><span class="page-link"><em
-                                                                class="icon ni ni-more-h"></em></span></li>
-                                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                                </ul><!-- .pagination -->
+                                                {{ $cards->links() }}
                                             </div>
                                             <div class="g">
                                                 <div
                                                     class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
-                                                    <div>Page</div>
-                                                    <div>
-                                                        <select class="form-select js-select2" data-search="on"
-                                                            data-dropdown="xs center">
-                                                            <option value="page-1">1</option>
-                                                            <option value="page-2">2</option>
-                                                            <option value="page-4">4</option>
-                                                            <option value="page-5">5</option>
-                                                            <option value="page-6">6</option>
-                                                            <option value="page-7">7</option>
-                                                            <option value="page-8">8</option>
-                                                            <option value="page-9">9</option>
-                                                            <option value="page-10">10</option>
-                                                            <option value="page-11">11</option>
-                                                            <option value="page-12">12</option>
-                                                            <option value="page-13">13</option>
-                                                            <option value="page-14">14</option>
-                                                            <option value="page-15">15</option>
-                                                            <option value="page-16">16</option>
-                                                            <option value="page-17">17</option>
-                                                            <option value="page-18">18</option>
-                                                            <option value="page-19">19</option>
-                                                            <option value="page-20">20</option>
-                                                        </select>
-                                                    </div>
-                                                    <div>OF 102</div>
+                                                    <div>Page {{ $cards->currentPage() }} OF {{ $cards->lastPage() }}</div>
                                                 </div>
                                             </div><!-- .pagination-goto -->
                                         </div><!-- .nk-block-between -->

@@ -14,13 +14,13 @@ class CardController extends Controller
     public function view()
     {
         $this->seo()->setTitle('Card Requests');
-        $cards = Cardrequest::where('status', 'pending' || 'status', 'declined')->get();
+        $cards = Cardrequest::paginate(10);
         return view('admin.card.card-request', compact('cards'));
     }
 
     public function viewAvailable(){
         $this->seo()->setTitle('Available Cards');
-        $cards = Card::all();
+        $cards = Card::paginate(10);
         return view('admin.card.cards', compact('cards'));
     }
 
@@ -42,7 +42,7 @@ class CardController extends Controller
             $card->card_name = $cardRequest->user->name;
             $cardRequest->status = 'approved';
             $card->save();
-            $cardRequest->save();
+            $cardRequest->delete();
         }
 
         return redirect()->route('admin.card.request');

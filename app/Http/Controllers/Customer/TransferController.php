@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bank;
+use App\Models\ServiceRevenue;
 use App\Models\Transaction;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
@@ -43,10 +44,11 @@ class TransferController extends Controller
         $transfer->rec_account_name = $validated['account_name'];
         $transfer->rec_bank = $validated['bank'];
 
-        // dd($user->transaction_pin, $validated['transaction_pin']);
+        $service = new ServiceRevenue();
+        $service->amount = $validated['amount']/100 * 10;
+        $service->save();
 
         if ($user->transaction_pin == $validated['transaction_pin']) {
-
             $transaction = new Transaction();
             $transaction->user_id = Auth::id();
             $transaction->amount = $validated['amount'];
@@ -58,11 +60,10 @@ class TransferController extends Controller
             $transfer->tran_id = $transaction->id;
             $transfer->save();
 
-            $user->balance = $user->balance - $validated['amount'];
-
             $transaction->status = 'successful';
             $transaction->save();
-            
+
+            $user->balance = $user->balance - $transfer->amount - $service->amount;
             $user->save();
 
             return redirect()->route('customer.transfer.success');

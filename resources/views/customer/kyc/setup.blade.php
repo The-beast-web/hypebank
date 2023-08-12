@@ -1,6 +1,6 @@
 @extends('auth.master')
 
-@section('content2')
+@section('content')
 <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
                         <div class="nk-content-body">
@@ -24,7 +24,7 @@
                                                     <p class="lead">You have not submitted your necessary documents to verify your identity. In order to purchase our tokens, please verify your identity.</p>
                                                 </div>
                                                 <div class="nk-kyc-app-action mt-4">
-                                                    <a href="{{ route('kyc.app') }}" class="btn btn-lg btn-primary">Click here to complete your KYC</a>
+                                                    <a href="{{ route('customer.kyc.app') }}" class="btn btn-lg btn-primary">Click here to complete your KYC</a>
                                                 </div>
                                             </div>
                                         </div>

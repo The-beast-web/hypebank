@@ -8,6 +8,7 @@ use App\Models\Bitcoin;
 use App\Models\Deposit;
 use App\Models\Kyc;
 use App\Models\Paypal;
+use App\Models\ServiceRevenue;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Notifications\DepositApproval;
@@ -22,7 +23,7 @@ class DepositController extends Controller
     {
         $this->seo()->setTitle('Deposits');
         $trash = Deposit::where('status_2', 'trash')->get()->sortByDesc('id');
-        $deposits = Deposit::where('status_2', 'active')->get()->sortByDesc('id');
+        $deposits = Deposit::where('status_2', 'active')->orderByDesc('id')->paginate(10);
         return view('admin.transactions.deposit.deposit', compact(['deposits', 'trash']));
     }
 

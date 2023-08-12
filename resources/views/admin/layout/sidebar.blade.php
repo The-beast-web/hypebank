@@ -63,7 +63,7 @@
                             <span class="nk-menu-text">Loans</span>
                         </a>
                         <ul class="nk-menu-sub">
-                            <li class="nk-menu-item @if(request()->routeIs('admin.card.request')) active current-page @endif"><a href="{{ route('admin.loan.active') }}" class="nk-menu-link"><span class="nk-menu-text">Active Loans</span></a></li>
+                            <li class="nk-menu-item @if(request()->routeIs('admin.loan.active')) active current-page @endif"><a href="{{ route('admin.loan.active') }}" class="nk-menu-link"><span class="nk-menu-text">Active Loans</span></a></li>
                             <li class="nk-menu-item @if(request()->routeIs('admin.loan.request')) active current-page @endif"><a href="{{ route('admin.loan.request') }}" class="nk-menu-link"><span class="nk-menu-text">Loan Requests</span></a></li>
                         </ul><!-- .nk-menu-sub -->
                     </li>

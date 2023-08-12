@@ -97,6 +97,9 @@
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <div class="col-12">
+                                                                                <div><strong>Note :</strong> <span>A 10% charge applies</span></div>
+                                                                            </div>
+                                                                            <div class="col-12">
                                                                                 <div class="form-group">
                                                                                     <button type="submit" class="btn btn-primary">Transfer</button>
                                                                                 </div>

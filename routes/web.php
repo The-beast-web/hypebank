@@ -20,14 +20,8 @@ use App\Http\Controllers\Customer\LoanController;
 use App\Http\Controllers\Customer\TransactionController;
 use App\Http\Controllers\Customer\TransferController;
 use App\Http\Controllers\Customer\WithdrawalController;
-use App\Models\Deposit;
-use App\Models\LoanPackage;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Notifications\DepositApproval;
-use Dflydev\DotAccessData\Util;
-use Flowframe\Trend\Trend;
-use Flowframe\Trend\TrendValue;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,34 +40,6 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 
-    $user = App\Models\User::find(6);
-
-    dd($user->unreadNotifications()->count());
-
-    foreach ($user->unreadNotifications as $notification) {
-        //$notification->markAsRead();
-    }
-
-    /*  $loan = LoanPackage::find(1);
-    return view('test', compact('loan')); */
-
-
-    //dd(Illuminate\Notifications\DatabaseNotification::first()->data['message']);
-
-    //Auth::user()->notify(new DepositApproval(Deposit::find(18)));
-
-    /*  $trend = Trend::model(User::class)
-        ->between(
-            start: now()->startOfYear(),
-            end: now()->endOfYear(),
-        )
-        ->perMonth()
-        ->count();
-
-    dd(
-        $trend->map(fn (TrendValue $value) => $value->aggregate),
-        $trend->map(fn (TrendValue $value) => $value->date)
-    ); */
 });
 
 
@@ -189,6 +155,7 @@ Route::middleware('verified')->name('customer.')->prefix('customer')->group(func
     Route::get('/settings', [AccountController::class, 'view'])->name('setting');
     Route::post('/settings', [AccountController::class, 'process'])->name('setting.process');
     Route::post('/setting-address', [AccountController::class, 'address_process'])->name('setting.address.process');
+    Route::post('/setting-password', [AccountController::class, 'security'])->name('setting.security');
 
     /* CUSTOMER DEPOSIT ROUTES */
 

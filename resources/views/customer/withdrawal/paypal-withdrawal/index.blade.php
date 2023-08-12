@@ -34,7 +34,7 @@
                                                             <div class="nk-block">
                                                                 <div class="card card-bordered">
                                                                     <div class="card-inner">
-                                                                        <form action="{{ route('withdraw.paypal.process')}}"
+                                                                        <form action="{{ route('customer.withdraw.paypal.process')}}"
                                                                             method="post">
                                                                             @csrf
                                                                             <div class="row gy-4">
@@ -115,6 +115,9 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--col-->
+                                                                                <div class="col-12">
+                                                                                    <div><strong>Note :</strong> <span>A 10% charge applies</span></div>
+                                                                                </div>
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <button type="submit"

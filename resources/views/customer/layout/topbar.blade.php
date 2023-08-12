@@ -13,12 +13,6 @@
                         alt="logo-dark">
                 </a>
             </div><!-- .nk-header-brand -->
-            <div class="nk-header-search ms-3 ms-xl-0">
-                <em class="icon ni ni-search"></em>
-                <input type="text" class="form-control border-transparent form-focus-none"
-                    placeholder="Search anything">
-            </div><!-- .nk-header-news -->
-            <!-- .nk-header-news -->
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
                     <li class="dropdown language-dropdown d-none d-sm-block me-n1">
@@ -62,8 +56,8 @@
                     </li><!-- .dropdown -->
 
                     <li class="dropdown notification-dropdown">
-                        <a href="#" class="dropdown-toggle nk-quick-nav-icon btn-icon" data-bs-toggle="dropdown">
-                            <em class="icon ni ni-bell"></em><span class="badge bg-danger rounded-pill">{{ $unread_count }}</span>
+                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
+                            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
                             <div class="dropdown-head">
@@ -94,59 +88,19 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown user-dropdown d-none">
-                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
+                    <li>
+                        <a href="#" onclick="event.preventDefault()" class="dropdown-toggle me-n1">
                             <div class="user-toggle">
                                 <div class="user-avatar sm">
                                     <em class="icon ni ni-user-alt"></em>
                                 </div>
-                                <div class="user-info d-none d-xl-block">
+                                <div class="user-info">
                                     <div class="user-status user-status-active text-capitalize">
-                                        {{ Auth::user()->user_type }}</div>
-                                    <div class="user-name dropdown-indicator">{{ Auth::user()->name }}</div>
+                                        {{ Auth::user()->name }}</div>
+                                    <div class="user-name">{{ Auth::user()->account_no }}</div>
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                <div class="user-card">
-                                    <div class="user-avatar">
-                                        <span>AB</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <span class="lead-text">{{ Auth::user()->name }}</span>
-                                        <span class="sub-text">{{ Auth::user()->account_no }}</span>
-                                        <span class="sub-text">{{ Auth::user()->email }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li><a href="html/ecommerce/user-profile.html"><em
-                                                class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                    <li><a href="{{ route('customer.setting') }}"><em
-                                                class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                    </li>
-                                    <li><a href="html/ecommerce/user-profile.html"><em
-                                                class="icon ni ni-activity-alt"></em><span>Login Activity</span></a>
-                                    </li>
-                                    <li><a class="dark-switch" href="#"><em
-                                                class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li><a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><em
-                                                class="icon ni ni-signout"></em><span>Sign out</span></a></li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </ul>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>

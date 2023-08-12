@@ -13,11 +13,11 @@ class AccountSetupController extends Controller
     //
     public function viewSetup()
     {
-        return view('customer.setup');
+        return view('customer.kyc.setup');
     }
     public function viewApp()
     {
-        return view('customer.kyc');
+        return view('customer.kyc.kyc');
     }
 
     public function setup(Request $request)
