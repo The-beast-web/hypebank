@@ -97,7 +97,7 @@
                                     <div class="data-item">
                                         <div class="data-col">
                                             <span class="data-label">Phone Number</span>
-                                            @if (is_null($user->kyc->phone))
+                                            @if (is_null($user->kyc?->phone))
                                                 <span class="data-value text-soft">Not added yet</span>
                                             @else
                                                 <span class="data-value">{{ $user->kyc->phone }}</span>
@@ -112,7 +112,7 @@
                                     <div class="data-item">
                                         <div class="data-col">
                                             <span class="data-label">Date of Birth</span>
-                                            <span class="data-value">{{ $user->kyc->dob }}</span>
+                                            <span class="data-value">{{ $user->kyc?->dob }}</span>
                                         </div>
                                         <div class="data-col data-col-end">
                                             <span class="data-more disable">
@@ -123,9 +123,9 @@
                                     <div class="data-item">
                                         <div class="data-col">
                                             <span class="data-label">Address</span>
-                                            <span class="data-value text-capitalize">{{ $user->kyc->address1 }}
-                                                {{ $user->kyc->city }},<br>{{ $user->kyc->state }},
-                                                {{ $user->kyc->country }}</span>
+                                            <span class="data-value text-capitalize">{{ $user->kyc?->address1 }}
+                                                {{ $user->kyc?->city }},<br>{{ $user->kyc?->state }},
+                                                {{ $user->kyc?->country }}</span>
                                         </div>
                                         <div class="data-col data-col-end">
                                             <span class="data-more disable">
@@ -136,7 +136,7 @@
                                     <div class="data-item">
                                         <div class="data-col">
                                             <span class="data-label">Zipcode</span>
-                                            <span class="data-value text-capitalize">{{ $user->kyc->zipcode }}</span>
+                                            <span class="data-value text-capitalize">{{ $user->kyc?->zipcode }}</span>
                                         </div>
                                         <div class="data-col data-col-end">
                                             <span class="data-more disable">
@@ -232,7 +232,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="birth-day">Date of Birth</label>
-                                            <input type="text" name="dob" value="{{ $user->kyc->dob }}"
+                                            <input type="text" name="dob" value="{{ $user->kyc?->dob }}"
                                                 class="form-control form-control-lg date-picker" id="birth-day"
                                                 placeholder="Enter your birth date">
                                         </div>
@@ -290,7 +290,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="address-st">State</label>
                                             <input type="text" class="form-control form-control-lg" name="state"
-                                                id="address-st" value="{{ $user->kyc->state }}">
+                                                id="address-st" value="{{ $user->kyc?->state }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -13,17 +13,23 @@ return new class extends Migration
     {
         Schema::create('kycs', function (Blueprint $table) {
             $table->id();
-            $table->integer('phone');
-            $table->string('gender');
+            $table->integer('user_id');
+            $table->string('first_name', 70);
+            $table->string('last_name', 70);
+            $table->string('email');
+            $table->string('phone', 50);
+            $table->string('gender')->nullable();
             $table->string('dob');
             $table->string('address1');
-            $table->string('address2');
+            $table->string('address2')->nullable();
             $table->string('city');
             $table->string('state');
             $table->string('country');
             $table->integer('zipcode');
+            $table->string('id_type', 50);
             $table->string('id_front');
             $table->string('id_back');
+            $table->string('status', 50);
             $table->timestamps();
         });
     }

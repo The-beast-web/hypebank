@@ -2,11 +2,11 @@
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
             <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="{{ asset('images/logo.png') }}" srcset="./images/logo2x.png 2x"
+                <img class="logo-light logo-img" src="{{ asset('images/hypebank-main.png') }}" srcset="./images/logo2x.png 2x"
                     alt="logo">
                 <img class="logo-dark logo-img" src="{{ asset('images/kkkl.png') }}"
                     srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                <img class="logo-small logo-img logo-img-small" src="{{ asset('images/logo-small.png') }}"
+                <img class="logo-small logo-img logo-img-small" src="{{ asset('images/myfavicon.png') }}"
                     srcset="./images/logo-small2x.png 2x" alt="logo-small">
             </a>
         </div>

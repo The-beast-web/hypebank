@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{ getFavicon() }}">
+    <link rel="shortcut icon" href="{{ asset('images/myfavicon.png') }}">
     <!-- Page Title  -->
     
     <!-- StyleSheets  -->
@@ -20,7 +20,7 @@
 </style>
 </head>
 
-<body class="nk-body bg-lighter npc-general has-sidebar ">
+<body class="nk-body bg-lighter npc-general has-sidebar " style="margin: 10px;">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">

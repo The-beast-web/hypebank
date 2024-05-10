@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Middleware\SetupChecker;
+use App\Http\Middleware\SetupPending;
 use App\Http\Middleware\SetupRestrict;
 use App\Http\Middleware\ShowSuccess;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;

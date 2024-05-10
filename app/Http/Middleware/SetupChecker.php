@@ -17,8 +17,10 @@ class SetupChecker
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if ($user->user_type !== "admin" && $user->setup !== "true") {
-            return redirect()->route('kyc.setup');
+        if ($user->user_type !== "admin" && $user->setup == "false") {
+            return redirect()->route('customer.kyc.setup');
+        } elseif ($user->user_type !== "admin" && $user->setup == "pending"){
+            return redirect()->route('customer.kyc.pending');
         }
         return $next($request);
     }

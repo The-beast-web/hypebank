@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kyc;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,11 @@ class AccountSetupController extends Controller
     public function viewApp()
     {
         return view('customer.kyc.kyc');
+    }
+
+    public function pending()
+    {
+        return view('customer.kyc.pending');
     }
 
     public function setup(Request $request)
@@ -50,7 +56,7 @@ class AccountSetupController extends Controller
         $kyc->dob = $validated['dob'];
         $kyc->city = $validated['city'];
         $kyc->state = $validated['state'];
-        $kyc->nationality = $validated['nationality'];
+        $kyc->country = $validated['nationality'];
         $kyc->address1 = $validated['address1'];
         $kyc->zipcode = $validated['zipcode'];
         $kyc->id_type = $validated['id-proof'];
@@ -69,12 +75,11 @@ class AccountSetupController extends Controller
             $path = Storage::disk('mydisk')->put('Proof', $request->file('id_back'));
             $kyc->id_back = $path;
         }
-
         $kyc->save();
 
-        $user = Auth::user();
-        $user->setup = 'true';
-
+        $user = User::where('id', Auth::id())->first();
+        $user->setup = "pending";
+        $user->save();
 
         return redirect()->route('customer.dashboard');
     }

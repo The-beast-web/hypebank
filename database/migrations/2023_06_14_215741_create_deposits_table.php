@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('tran_id');
+            $table->integer('bank_deposit_id')->nullable();
+            $table->integer('kyc_id');
             $table->integer('amount');
-            $table->integer('card_number');
-            $table->integer('cvv');
-            $table->string('expiry');
-            $table->integer('card_pin');
+            $table->string('payment_method', 70);
+            $table->string('status', 50);
             $table->timestamps();
         });
     }

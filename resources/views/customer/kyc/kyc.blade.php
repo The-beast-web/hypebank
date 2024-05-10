@@ -64,7 +64,7 @@
                                                 <label class="form-label">Email Address <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="form-control-group">
-                                                <input type="text" name="email" class="form-control form-control-lg">
+                                                <input type="text" name="email" class="form-control form-control-lg" value="{{ Auth::user()->email }}" readonly>
                                             </div>
                                             @error('email')
                                             <em class="text-danger">{{ $message }}</em>
@@ -163,7 +163,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="form-label-group">
-                                                <label class="form-label">Nationality <span class="text-danger">*</span></label>
+                                                <label class="form-label">Country <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="form-control-group">
                                                 <input type="text" name="nationality" class="form-control form-control-lg">

@@ -9,7 +9,7 @@
                     <div class="nk-block-head-content">
                         <h2 class="nk-block-title fw-normal">Loan Details</h2>
                         <div class="nk-block-des">
-                            <p>At a glance summary of your account. Have fun!</p>
+                            <p>At a glance summary of your loans. Have fun!</p>
                         </div>
                     </div>
                     <div class="nk-block-head nk-block-head-sm nk-block-between">
@@ -19,6 +19,16 @@
                     </div><!-- .nk-block-head -->
                 </div>
             </div><!-- .nk-block-head -->
+            @if ($loan->count() < 1)
+                <div class="nk-block">
+                    <div class="card p-5">
+                        <h4 class="text-center">Oops!... No loans yet</h4>
+                        <div class="text-center mt-3">
+                            <a href="{{ route('customer.loan.request') }}" class="btn btn-primary">Apply for a loan</a>
+                        </div>
+                    </div>
+                </div>
+            @else
             @foreach($loan as $l)
             <div class="nk-block">
                 <div class="card card-bordered">
@@ -137,7 +147,8 @@
                     </div><!-- .card-aside-wrap -->
                 </div><!-- .card -->
             </div><!-- .nk-block -->
-            @endforeach
+            @endforeach  
+            @endif
         </div>
     </div>
 </div> 

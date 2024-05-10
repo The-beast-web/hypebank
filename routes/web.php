@@ -38,10 +38,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-
-});
-
 
 /* AUTH ROUTES */
 Auth::routes(['verify' => true]);
@@ -123,11 +119,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 /* END ADMIN ROUTES */
 
-
-
-
-
-
 /* CUSTOMER ROUTES */
 Route::middleware('verified')->name('customer.')->prefix('customer')->group(function () {
 
@@ -138,6 +129,7 @@ Route::middleware('verified')->name('customer.')->prefix('customer')->group(func
     Route::middleware(['verified', 'restrict'])->group(function () {
         Route::get('/kyc-setup', [AccountSetupController::class, 'viewSetup'])->name('kyc.setup');
         Route::get('/kyc-application', [AccountSetupController::class, 'viewApp'])->name('kyc.app');
+        Route::get('/kyc-pending', [AccountSetupController::class, 'pending'])->name('kyc.pending');
         Route::post('/account-setup', [AccountSetupController::class, 'setup'])->name('acc-setup');
     });
     /* END OF KYC ROUTES */

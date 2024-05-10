@@ -4,13 +4,11 @@
 <head>
     <base href="../../../">
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
+    {!! SEO::generate() !!}
+    <meta name="author" content="The Beastist">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{ getFavicon() }}">
-    <!-- Page Title  -->
-    <title>Login | DashLite Admin Template</title>
+    <link rel="shortcut icon" href="{{ asset('images/myfavicon.png') }}">
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.1.2') }}">
@@ -27,8 +25,8 @@
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-4 text-center">
                             <a href="html/index.html" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" src="{{ getLogo() }}" srcset="./images/logo2x.png 2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" src="{{ asset('images/logo-dark.png') }}" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                                <img class="logo-light logo-img logo-img-lg" src="{{ asset('images/kkkl.png') }}" srcset="./images/logo2x.png 2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" src="{{ asset('images/kkkl.png') }}" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             </a>
                         </div>
                         @yield('content')

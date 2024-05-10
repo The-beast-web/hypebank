@@ -284,7 +284,7 @@
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1">
                                                         <li class="nk-tb-action-hidden">
-                                                            <a href="{{ route('admin.kyc.detail', $user->kyc?->id) }}"
+                                                            <a href="{{ route('admin.kyc.detail', $user->kyc->id) }}"
                                                                 class="btn btn-trigger btn-icon" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="Details">
                                                                 <em class="icon ni ni-eye-fill"></em>

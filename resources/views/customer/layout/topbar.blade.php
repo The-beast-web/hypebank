@@ -76,11 +76,8 @@
                                                 <div class="nk-notification-time">{{ $n->created_at->diffForHumans() }}
                                                 </div>
                                             </div>
-                                            
-                                     
                                     </a>
                                     @endforeach
-
                                 </div><!-- .nk-notification -->
                             </div><!-- .nk-dropdown-body -->
                             <div class="dropdown-foot center">
@@ -88,19 +85,28 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" onclick="event.preventDefault()" class="dropdown-toggle me-n1">
+                    <li class="dropdown">
+                        <a href="#" onclick="event.preventDefault()" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
                             <div class="user-toggle">
                                 <div class="user-avatar sm">
                                     <em class="icon ni ni-user-alt"></em>
                                 </div>
-                                <div class="user-info">
+                                <div class="user-info d-none d-sm-block">
                                     <div class="user-status user-status-active text-capitalize">
                                         {{ Auth::user()->name }}</div>
                                     <div class="user-name">{{ Auth::user()->account_no }}</div>
                                 </div>
                             </div>
                         </a>
+                        <div class="dropdown-menu p-2 d-lg-none d-md-none">
+                            <div class="user-toggle">
+                                <div class="user-info">
+                                    <div class="user-status user-status-active text-capitalize">
+                                        {{ Auth::user()->name }}</div>
+                                    <div class="user-name">{{ Auth::user()->account_no }}</div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>

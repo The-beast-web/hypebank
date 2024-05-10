@@ -47,15 +47,10 @@ class UserController extends Controller
         //
         $rules = [
             'name' => 'required',
-
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-
             'account_type' => 'required',
-
             'user_type' => 'required'
-
-
         ];
 
         $validated = request()->validate($rules);
@@ -156,7 +151,6 @@ class UserController extends Controller
             if (request()->has('id_back')) {
                 $path = Storage::disk('mydisk')->put('kyc-photos', request()->file('id_back'));
             }
-
             $kyc->save();
         } else {
             $kyc = new Kyc();

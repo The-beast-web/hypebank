@@ -22,13 +22,14 @@
                                     <em class="icon ni ni-files"></em>
                                 </div>
                                 <div class="nk-kyc-app-text mx-auto">
-                                    <p class="lead">You have not submitted your necessary documents to verify your
-                                        identity. In order to gain full access to your account, please verify your
-                                        identity.</p>
+                                    <p class="lead">You have submitted your KYC details and it is awaiting
+                                        approval. KYC approval usually takes between a few minutes to 24 hours,
+                                        or few days in rare cases.
+                                    </p>
                                 </div>
                                 <div class="nk-kyc-app-action mt-4">
-                                    <a href="{{ route('customer.kyc.app') }}" class="btn btn-lg btn-primary">Click here
-                                        to complete your KYC</a>
+                                    <a href="{{ route('customer.dashboard')}}" class="btn btn-lg btn-primary">Back to
+                                    Dashboard</a>
                                 </div>
                             </div>
                         </div>

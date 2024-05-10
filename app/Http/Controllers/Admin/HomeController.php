@@ -14,9 +14,7 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-
         $this->seo()->setTitle('Dashboard');
-        $revenue = ServiceRevenue::all();
         $holding = Transaction::all();
         $user = User::all();
 
@@ -32,6 +30,6 @@ class HomeController extends Controller
         $chart['labels'] = $trend->map(fn (TrendValue $value) => $value->date)->toArray();
 
 
-        return view('admin.index', $chart, compact(['user', 'revenue', 'holding']));
+        return view('admin.index', $chart, compact(['user', 'holding']));
     }
 }

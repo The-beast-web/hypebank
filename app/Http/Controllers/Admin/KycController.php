@@ -17,15 +17,13 @@ class KycController extends Controller
         $this->seo()->setTitle('Kyc Documents');
         $card = Card::where('user_id', Auth::id())->get();
         $kyc = Kyc::all();
-        $users = User::all();
+        $users = User::where('setup', '!=', 'false')->get();
         return view('admin.kyc.index', compact(['users', 'kyc', 'card']));
     }
 
     //view kyc full details
     public function detail($id)
     {
-       
-        
         $kyc = Kyc::find($id);
         $user = User::find($kyc->user_id);
         $this->seo()->setTitle($user->name.'- Kyc Documents');

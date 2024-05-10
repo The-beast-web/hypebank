@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('user_type', 20);
+            $table->string('balance')->default('0');
+            $table->string('account_no', 20);
+            $table->string('account_type', 50)->default('tier 1');
+            $table->string('setup', 20);
+            $table->string('user_profile')->default('images\avatar\download.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
